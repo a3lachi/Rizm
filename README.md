@@ -15,7 +15,7 @@ It's correct that if the tools I'm using are "powerful" I will build "better" (i
 1. Know the total abstraction layers before I got here
 2. Use abstraction and pretend I know what I'm doing
 
-This project aim to explore the gap between the two scenarios, from keyboard strokes to the hardware changing state passing by all the algorithms used by every piece of code.
+This project aim to explore the gap between the two scenarios, from keyboard strokes to the hardware changing its state passing by all the algorithms used by every piece of code.
 
 <br>
 
