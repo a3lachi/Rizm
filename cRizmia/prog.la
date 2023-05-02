@@ -1,0 +1,10 @@
+
+string my_str = "Random text", var_str =         "Cars do travel" , curr_str_56 = "Programming language";
+
+
+
+              string          my_str = "Hello World!"      , var_str =          "Goodbye World.", curr_str_56 = "TEST PASSED!";
+
+int b = 56 ;
+
+string final_test_variable = "TEST ✅✅✅" ;
