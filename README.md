@@ -35,7 +35,7 @@ The inspiration behind this project is to "really know" : What happens when I te
 # Compiler 
 -**Lexer**: Breaks down the input source code into a series of tokens that can be easily processed by the compiler.
 
--**Parser**: Responsible for taking the tokens produced by the Lexer and generating an abstract syntax tree (AST) that represents <br>
+-**Parser**: Responsible for taking the tokens produced by the Lexer and generating an abstract syntax tree (AST) that represents 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     the structure of the program.
 
 -**ASTNode**: Represents a node in the abstract syntax tree.
