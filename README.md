@@ -24,7 +24,9 @@ The inspiration behind this project is to "really know" : What happens when I te
 <br>
 
 > "**Rizmia**" is the last word of "Khawarizmia" which translates from arabic to "Algorithm" <br>
+
 > (it is widely adopted to write Arabic using Latin alphabt) <br>
+
 > The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm"
 
 
