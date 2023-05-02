@@ -15,9 +15,6 @@ This project aim to explore the gap between the two scenarios, from keyboard str
 
 
 # Rizm
-
-
-
 This project involves the development of a compiled programming language in C, C++, Rust, and Go.
 The main goal of this project is to **benchmark** different programming languages and **deeply understand** their core paradigms.
 
@@ -37,7 +34,7 @@ Rizm Project is a playground to discover all the underlaying cooking C, C++, Go 
 
 Rizm, at this stage, is not yet designed (precisely, I still don't know what happens after generating the AST tree, I served 2 dishes so far, a lexer and a parser), but its goal is to offer as much **precision** as possible, **with**, powerful abstraction layers. This I think will make of it a lifetime project that will integrate all precision models I can construct in the remaining time I have alive.
 
-
+<br>
 
 # Compiler 
 -**Lexer**: Breaks down the input source code into a series of tokens.
