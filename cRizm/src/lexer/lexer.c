@@ -171,7 +171,6 @@ char* get_token_type(TokenType type) {
    }
 }
 
-
 TokenType tokenize(const char* s){
    if (strlen(s)==1)
       return tokenize_char(*s);
@@ -180,7 +179,6 @@ TokenType tokenize(const char* s){
    else 
       return tokenize_string(s);
 }
-
 
 bool is_char_op(const char c){
 	switch (c) {
@@ -205,8 +203,6 @@ bool is_char_op(const char c){
 	}
 }
 
-
-
 TOKEN create_token(TokenType type, const char* value, unsigned int line , unsigned int col ) {
    TOKEN token ;
    token.type = type ;
@@ -216,7 +212,6 @@ TOKEN create_token(TokenType type, const char* value, unsigned int line , unsign
    return token ;
 }
 
-
 BrmjToken create_BrmjToken(TokenType type, char* value){
    BrmjToken token ;
    token.type = type ; 
@@ -224,14 +219,11 @@ BrmjToken create_BrmjToken(TokenType type, char* value){
    return token ;
 }
 
-
-
 BrmjToken tokenize_Brmj(char* s){
    TokenType tokenType = tokenize(s);
    BrmjToken token = create_BrmjToken(tokenType,s);
    return token;
 }
-
 
 void process_tokens(BrmjTokenS* tokens){
    BrmjTokenS* headSpaces , *ptokens = tokens ;
@@ -332,8 +324,6 @@ void process_tokens(BrmjTokenS* tokens){
    }
 }
 
-
-
 BrmjTokenS* tokenize_program(char** s) {
    BrmjTokenS* tokens ;
    BrmjTokenS* ptoken = NULL;
@@ -357,7 +347,6 @@ BrmjTokenS* tokenize_program(char** s) {
    return tokens ;
 }
 
-
 void print_tokens(BrmjTokenS* tokens) {
    printf("-------- LEXER TOKENS -----------------------------------------------------------------------------------------\n");
    while(tokens)
@@ -374,6 +363,7 @@ void print_tokens(BrmjTokenS* tokens) {
   }
   printf("----------------------------------------------------------------------------------------------------------------\n\n\n");
 }
+
 void print_tokens_two(BrmjTokenS* tokens,int indent){
 while(tokens)
   {
@@ -394,7 +384,6 @@ while(tokens)
   }
 }
 
-
 void free_tokens(BrmjTokenS* tokens){
    BrmjTokenS* curr = tokens;
    while (curr != NULL) {
@@ -403,7 +392,6 @@ void free_tokens(BrmjTokenS* tokens){
       free(temp);
    }
 }
-
 
 BrmjTokenS* copy_tokens(BrmjTokenS* tokens) {
     BrmjTokenS* new_tokens = NULL;

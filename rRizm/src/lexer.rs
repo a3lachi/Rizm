@@ -1,5 +1,6 @@
 
 
+
 pub mod lexer {
     pub struct Lexer {
         pub value: i32,
@@ -15,7 +16,7 @@ pub mod lexer {
         }
 
         pub fn print(&self) {
-            println!("Value: {}", self.value);
+            println!("Value");
         }
     }
 }
