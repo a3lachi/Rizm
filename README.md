@@ -41,8 +41,6 @@ Rizm Project is a playground to discover all the underlaying cooking C, C++, Go 
 
 -**Parser**: Generates from the tokens an abstract syntax tree (AST) that represents the structure of the program.
 
--**ASTNode**: Represents a node in the abstract syntax tree.
-
 -**CodeGenerator**: Responsible for generating executable code from the AST.
 
 -**Optimizer**: Optimize the generated code to improve performance or reduce code size.
