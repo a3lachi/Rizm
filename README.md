@@ -1,3 +1,7 @@
+# Building in public
+As I'm still exploring how the wheels works, what I expose here is my learning journey process, I am learning how the wheel works and I will build replicates of it before I can acquire the knowledge and start the "real cooking". Everything you read below gets daily updated, and is most of the times not conform or "wrong".
+<br>
+
 # Killing Iron Man
 This project is for **learning** purposes, and learning never ends, the set of informations is yes countable but I like to have a life apart, the more you read this README.md the more you'll realize that this person basically want to, like we like to say in Morocco, kill **Iron Man**, who's supposedly in possession of the most cutting-edge technology and can't die, especially if it's a simple human like me trying to kill him.
 
