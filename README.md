@@ -23,8 +23,8 @@ The inspiration behind this project is to "really know" : What happens when I te
 
 <br>
 
-> "**Rizmia**" is the last word of "Khawarizmia" which translates from arabic to "Algorithm" 
-> (it is widely adopted to write Arabic using Latin alphabt)
+> "**Rizmia**" is the last word of "Khawarizmia" which translates from arabic to "Algorithm" <br>
+> (it is widely adopted to write Arabic using Latin alphabt) <br>
 > The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm"
 
 
@@ -35,7 +35,7 @@ The inspiration behind this project is to "really know" : What happens when I te
 # Compiler 
 -**Lexer**: Breaks down the input source code into a series of tokens that can be easily processed by the compiler.
 
--**Parser**: Responsible for taking the tokens produced by the Lexer and generating an abstract syntax tree (AST)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   that represents the structure of the program.
+-**Parser**: Responsible for taking the tokens produced by the Lexer and generating an abstract syntax tree (AST) that represents <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the structure of the program.
 
 -**ASTNode**: Represents a node in the abstract syntax tree.
 
