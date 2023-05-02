@@ -5,8 +5,9 @@ This project is for **learning** purposes, and learning never ends, the set of i
 
 # Introduction
 
-To code is not to use an API, a software engineer is not a customer ordering **food**. He is a tool builder, what leads to : how can I build a tool using tools I abstractly use and not genuinely know ? It's correct that if the tools I'm using are "powerful" I will build "better", I am left then with two options :
-1. Know the happening abstraction layers before I got here
+To code is not to use an API, a software engineer is not a customer ordering **food**. He is a tool builder, what leads to : how can I build a tool using tools I abstractly use and not genuinely know ? <br>
+It's correct that if the tools I'm using are "powerful" I will build "better" (in terms of everything), I am left then with two options :
+1. Know the total abstraction layers before I got here
 2. Use abstraction and pretend I know what I'm doing
 
 This project aim to explore the gap between the two scenarios, from keyboard strokes to the hardware changing state passing by all the algorithms used by every piece of code.
