@@ -1,5 +1,6 @@
 # Building in public
 As I'm still exploring how the wheels works, what I expose here is my learning journey process, I am learning how the wheel works and I will build replicates of it before I can acquire the knowledge and start the "real cooking". Everything you read below gets daily updated, and is most of the times not conform or "wrong".
+
 <br>
 
 # Killing Iron Man
