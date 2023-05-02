@@ -19,7 +19,7 @@ This project aim to explore the gap between the two scenarios, from keyboard str
 This project involves the development of a compiled programming language in C, C++, Rust, and Go.
 The main goal of this project is to **benchmark** different programming languages and **deeply understand** their core paradigms.
 
-The inspiration behind this project is to "really know" : What happens when I tell Python to print('I am printing') ?  How the array selection operator [] is used in the built-in types ? How C agregate data ? can I write a programming language in Arabic ? **وي تبشلحة علاش لا**.
+The inspiration behind this project is to "really know" : What happens when I tell Python to print('I am printing') ?  How the array selection operator [] is used in the built-in types ? How C agregates data ? how to override built-in features ?
 
 Rizm Project is a playground to discover all the underlaying cooking C, C++, Go and Rust do before serving delicious **food**.
 
