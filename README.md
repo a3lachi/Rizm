@@ -1,7 +1,7 @@
 # Killing Iron Man
 This project is for **learning** purposes, and learning never ends, the set of informations is yes countable but I like to have a life apart, the more you read this README.md the more you'll realize that this person basically want to, like we like to say in Morocco, kill **Iron Man**, who's supposedly in possession of the most cutting-edge technology and can't die, especially if it's a simple human like me trying to kill him.
 
-
+<br><br>
 # Introduction
 
 To code is not to use an API, a software engineer is not a customer ordering **food**. He is a tool builder, what leads to : how can I build a tool using tools I abstractly use and not genuinely know ? It's correct that if the tools I'm using are "powerful" I will build "better", I am left then with two options :
@@ -47,4 +47,5 @@ Rizm, at this stage, is not yet designed (precisely, I still don't know what hap
 
 -**Optimizer**: Optimize the generated code to improve performance or reduce code size.
 
-
+<br><br><br><br>
+> weird flex but did I wrote this without ChatGPT wow I'm really good 😆🤩🤣
