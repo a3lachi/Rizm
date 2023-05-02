@@ -31,6 +31,10 @@ Rizm Project is a playground to discover all the underlaying cooking C, C++, Go 
 
 <br>
 
+## This being said, Rizm is an algorithm factory, it dosen't serve foods, it serves **chefs** who will "precisely" cook the **food** you want
+
+Rizm, at this stage, is not yet designed (precisely, I still don't know what happens after generating the AST tree, I served 2 dishes so far, a lexer and a parser), but its goal is to offer as much **precision** as possible, **with**, powerful abstraction layers.
+
 
 
 # Compiler 
