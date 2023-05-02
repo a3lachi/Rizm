@@ -31,7 +31,6 @@ Rizm Project is a playground to discover all the underlaying cooking C, C++, Go 
 
 > The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm" <br>
 
-> شحال من عام وانا تنكودي يالاه كتشفت بلي عمري كوديت 😆 قطع لايدير لخير
 <br>
 
 
