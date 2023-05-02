@@ -54,5 +54,5 @@ Rizm, at this stage, is not yet designed (precisely, I still don't know what hap
 
 > this project is also destined to recruiters who might be intersted in having me code in exchange of money and recognition (he will do it for free, just saying 😉😂), please consider that I'm aware that my approach is "wrong" but I'm still doing it. 
 
-> I don't know anything about entreprise level engeneering work, I can say with deducted from evidence confidence that I'm a decent tier (I want to say god tier) engineer, I know how to identify, analyse, and fix problems in **agnostic** manners 
+> I don't know anything about entreprise level engeneering work, I can say with deducted from evidence confidence that I'm a decent tier (I want to say god tier) engineer, I know how to identify, analyse, and fix problems in **agnostic** manners, I can solve vertically and horizontally.
 
