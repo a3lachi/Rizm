@@ -37,9 +37,9 @@ Rizm Project is a playground to discover all the underlaying cooking C, C++, Go 
 
 
 # Compiler 
--**Lexer**: Breaks down the input source code into a series of tokens that can be easily processed by the compiler.
+-**Lexer**: Breaks down the input source code into a series of tokens.
 
--**Parser**: Responsible for taking the tokens produced by the Lexer and generating an abstract syntax tree (AST) that represents <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the structure of the program.
+-**Parser**: Generates from the tokens an abstract syntax tree (AST) that represents the structure of the program.
 
 -**ASTNode**: Represents a node in the abstract syntax tree.
 
