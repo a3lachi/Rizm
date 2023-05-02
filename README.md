@@ -43,6 +43,7 @@ Rizm, at this stage, is not yet designed (precisely, I still don't know what hap
 > The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm" <br>
 
 <br>
+
 # Compiler 
 -**Lexer**: Breaks down the input source code into a series of tokens.
 
