@@ -48,4 +48,4 @@ Rizm, at this stage, is not yet designed (precisely, I still don't know what hap
 -**Optimizer**: Optimize the generated code to improve performance or reduce code size.
 
 <br><br><br><br>
-> weird flex but did I wrote this without ChatGPT wow I'm really good 😆🤩🤣
+> weird flex but did I wrote this without ChatGPT wow I must be good at it, the it stands for displaying what can be viewed as it 😆🤩🤣
