@@ -1,7 +1,7 @@
 # Killing Iron Man
 This project is for **learning** purposes, and learning never ends, the set of informations is yes countable but I like to have a life apart, the more you read this README.md the more you'll realize that this person basically want to, like we like to say in Morocco, kill **Iron Man**, who's supposedly in possession of the most cutting-edge technology and can't die, especially if it's a simple human like me trying to kill him.
 
-<br><br>
+<br>
 # Introduction
 
 To code is not to use an API, a software engineer is not a customer ordering **food**. He is a tool builder, what leads to : how can I build a tool using tools I abstractly use and not genuinely know ? It's correct that if the tools I'm using are "powerful" I will build "better", I am left then with two options :
@@ -52,7 +52,7 @@ Rizm, at this stage, is not yet designed (precisely, I still don't know what hap
  
 > the it stands for displaying whatever can be viewed as it 😆🤩🤣
 
-> this project is also a way to convince recruiters who might be intersted in having me code in exchange of money (he will do it for free, just saying 😉😂), please consider that I'm aware that my approach is "wrong" but I'm still doing it. I used the word money for humour, I'm rich I own Morocco 🤣🤣🤣
+> this project is also a way to convince recruiters who might be intersted in having me code in exchange of money (he will do it for free, just saying 😉😂), please consider that I'm aware that my approach is "wrong" but I'm still doing it. I used the word money for humour, however I'm rich, very rich. I own Morocco 🤣🤣🤣
 
 > I don't know anything about entreprise level engeneering work, I can say with deducted from evidence confidence that I'm a decent tier (I want to say god tier) engineer, I know how to identify, analyse, and fix problems in **agnostic** manners, I can solve vertically and horizontally.
 
