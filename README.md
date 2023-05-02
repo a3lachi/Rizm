@@ -52,5 +52,5 @@ Rizm, at this stage, is not yet designed (precisely, I still don't know what hap
 
 > this project is also a way to convince recruiters who might be intersted in having me code in exchange of money (he will do it for free, just saying 😉😂), please consider that I'm aware that my approach is "wrong" but I'm still doing it. I used the word money for humour, I happen to be very rich. I own Morocco 🤣🤣🤣
 
-> I don't know anything about entreprise level engeneering work, I can say with deducted from evidence confidence that I'm a decent tier (I want to say god tier) engineer, I know how to identify and analyse problems and judge precisely their solvability. 
+> I don't know anything about entreprise level engeneering work, I can say that I'm a decent tier engineer, I know how to identify and analyse problems and judge precisely their solvability. I never worked on real life and entreprise level problems. Yet.
 
