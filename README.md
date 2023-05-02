@@ -30,7 +30,8 @@ The inspiration behind this project is to "really know" : What happens when I te
 > The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm"
 
 
-
+<br>
+<br>
 
 
 
