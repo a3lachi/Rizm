@@ -1,4 +1,3 @@
-# hRizm
 
 # A compiler in Haskell ?  
 
