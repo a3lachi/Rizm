@@ -26,7 +26,7 @@ typedef enum {
   VARIABLE_DECLARATION,
   EXPRESSION_STATEMENT, // print()
   WHILE_STATEMENT,
-} Brmj_STRUCTURE ;
+} rizm_STRUCTURE ;
 
 
 
@@ -44,19 +44,19 @@ typedef enum {
   AST_ERROR_AFTER_VALUE,
   AST_ERROR_AFTER_COMMA,
   AST_ERROR_EQUAL_NFOUND,
-} Brmj_STRUCTURE_ERROR ;
+} rizm_STRUCTURE_ERROR ;
 
 
 
 
-typedef struct Brmj_AST {
+typedef struct rizm_AST {
   union 
   {
-    Brmj_STRUCTURE s;
-    Brmj_STRUCTURE_ERROR s_error ;
+    rizm_STRUCTURE s;
+    rizm_STRUCTURE_ERROR s_error ;
   } structure;
   int is_error;
-  BrmjTokenS* tokens ;
+  rizmTokenS* tokens ;
   int start,end;
 
   union {
@@ -73,23 +73,23 @@ typedef struct Brmj_AST {
     } CONSTANT;
   } DATA;
 
-  struct Brmj_AST* next ;
-  struct Brmj_AST* childs ;
+  struct rizm_AST* next ;
+  struct rizm_AST* childs ;
 
-} Brmj_AST;
-
-
-char* get_structure_type(Brmj_STRUCTURE structure);
-char* get_structure_error(Brmj_STRUCTURE_ERROR serr);
-void create_Brmj_AST(BrmjTokenS** tkns , int start_flag , char* value,TokenType type, Brmj_AST** nodes, char* varname);
-Brmj_AST* parse_tokens(BrmjTokenS* tokens);
-bool parse_declare_variable_tokens(int start_flag , Brmj_AST* nodes,BrmjTokenS** tkns , TokenType type);
+} rizm_AST;
 
 
-void print_node_json(Brmj_AST* node, int indent_level , int print_tokens) ;
-Brmj_AST* parse_tokens(BrmjTokenS* tokens);
-void print_ast_recursive(Brmj_AST* nodes);
-void print_ast(Brmj_AST* nodes , int print_tokens);
-void free_ast(Brmj_AST* nodes);
+char* get_structure_type(rizm_STRUCTURE structure);
+char* get_structure_error(rizm_STRUCTURE_ERROR serr);
+void create_rizm_AST(rizmTokenS** tkns , int start_flag , char* value,TokenType type, rizm_AST** nodes, char* varname);
+rizm_AST* parse_tokens(rizmTokenS* tokens);
+bool parse_declare_variable_tokens(int start_flag , rizm_AST* nodes,rizmTokenS** tkns , TokenType type);
+
+
+void print_node_json(rizm_AST* node, int indent_level , int print_tokens) ;
+rizm_AST* parse_tokens(rizmTokenS* tokens);
+void print_ast_recursive(rizm_AST* nodes);
+void print_ast(rizm_AST* nodes , int print_tokens);
+void free_ast(rizm_AST* nodes);
 
 #endif

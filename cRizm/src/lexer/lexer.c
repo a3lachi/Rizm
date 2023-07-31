@@ -212,21 +212,21 @@ TOKEN create_token(TokenType type, const char* value, unsigned int line , unsign
    return token ;
 }
 
-BrmjToken create_BrmjToken(TokenType type, char* value){
-   BrmjToken token ;
+rizmToken create_rizmToken(TokenType type, char* value){
+   rizmToken token ;
    token.type = type ; 
    token.value = value ;
    return token ;
 }
 
-BrmjToken tokenize_Brmj(char* s){
+rizmToken tokenize_rizm(char* s){
    TokenType tokenType = tokenize(s);
-   BrmjToken token = create_BrmjToken(tokenType,s);
+   rizmToken token = create_rizmToken(tokenType,s);
    return token;
 }
 
-void process_tokens(BrmjTokenS* tokens){
-   BrmjTokenS* headSpaces , *ptokens = tokens ;
+void process_tokens(rizmTokenS* tokens){
+   rizmTokenS* headSpaces , *ptokens = tokens ;
    int count = 0;
    char* countStr  ;
    while (ptokens){
@@ -236,7 +236,7 @@ void process_tokens(BrmjTokenS* tokens){
          ptokens=ptokens->next;
          while (ptokens && ptokens->token.type == SPACE){
             count++;
-            BrmjTokenS* currtoken = ptokens ;
+            rizmTokenS* currtoken = ptokens ;
             ptokens=ptokens->next;
             free(currtoken);
          }
@@ -252,7 +252,7 @@ void process_tokens(BrmjTokenS* tokens){
          count++;
          ptokens=ptokens->next;
          while (ptokens && ptokens->token.type == NEWLINE){
-            BrmjTokenS* currtoken = ptokens ;
+            rizmTokenS* currtoken = ptokens ;
             count++;
             ptokens=ptokens->next;
             free(currtoken);
@@ -266,7 +266,7 @@ void process_tokens(BrmjTokenS* tokens){
       }
       else if (ptokens && ptokens->token.type == QUOTE) {
          headSpaces = ptokens ;
-         BrmjTokenS* p_tokens = ptokens; 
+         rizmTokenS* p_tokens = ptokens; 
          ptokens=ptokens->next;
          int count = strlen(ptokens->token.value) ;
          while(ptokens && ptokens->token.type!=QUOTE){
@@ -292,7 +292,7 @@ void process_tokens(BrmjTokenS* tokens){
       }
       else if (ptokens && ptokens->token.type == DOUBLEQUOTE) {
          headSpaces = ptokens ;
-         BrmjTokenS* p_tokens = ptokens; 
+         rizmTokenS* p_tokens = ptokens; 
          int count = 1 ;
          ptokens=ptokens->next;
          while(ptokens && ptokens->token.type!=DOUBLEQUOTE){
@@ -324,18 +324,18 @@ void process_tokens(BrmjTokenS* tokens){
    }
 }
 
-BrmjTokenS* tokenize_program(char** s) {
-   BrmjTokenS* tokens ;
-   BrmjTokenS* ptoken = NULL;
-   BrmjToken token ;
+rizmTokenS* tokenize_program(char** s) {
+   rizmTokenS* tokens ;
+   rizmTokenS* ptoken = NULL;
+   rizmToken token ;
    while(*s){
-      token = tokenize_Brmj(*s);
+      token = tokenize_rizm(*s);
       if (token.type != EMPTY){
          if (ptoken == NULL) {
-            ptoken = (BrmjTokenS*) malloc(sizeof(BrmjTokenS));
+            ptoken = (rizmTokenS*) malloc(sizeof(rizmTokenS));
             tokens = ptoken;
          } else {
-            ptoken->next = (BrmjTokenS*) malloc(sizeof(BrmjTokenS));
+            ptoken->next = (rizmTokenS*) malloc(sizeof(rizmTokenS));
             ptoken = ptoken->next;
          }
          ptoken->token = token;
@@ -347,7 +347,7 @@ BrmjTokenS* tokenize_program(char** s) {
    return tokens ;
 }
 
-void print_tokens(BrmjTokenS* tokens) {
+void print_tokens(rizmTokenS* tokens) {
    printf("-------- LEXER TOKENS -----------------------------------------------------------------------------------------\n");
    while(tokens)
   {
@@ -364,7 +364,7 @@ void print_tokens(BrmjTokenS* tokens) {
   printf("----------------------------------------------------------------------------------------------------------------\n\n\n");
 }
 
-void print_tokens_two(BrmjTokenS* tokens,int indent){
+void print_tokens_two(rizmTokenS* tokens,int indent){
 while(tokens)
   {
       printf("%*s   |- ",indent,"");
@@ -384,22 +384,22 @@ while(tokens)
   }
 }
 
-void free_tokens(BrmjTokenS* tokens){
-   BrmjTokenS* curr = tokens;
+void free_tokens(rizmTokenS* tokens){
+   rizmTokenS* curr = tokens;
    while (curr != NULL) {
-      BrmjTokenS* temp = curr;
+      rizmTokenS* temp = curr;
       curr = curr->next;
       free(temp);
    }
 }
 
-BrmjTokenS* copy_tokens(BrmjTokenS* tokens) {
-    BrmjTokenS* new_tokens = NULL;
-    BrmjTokenS* current_token = tokens;
-    BrmjTokenS* current_new_token = NULL;
+rizmTokenS* copy_tokens(rizmTokenS* tokens) {
+    rizmTokenS* new_tokens = NULL;
+    rizmTokenS* current_token = tokens;
+    rizmTokenS* current_new_token = NULL;
     
     while (current_token != NULL) {
-        BrmjTokenS* new_token = (BrmjTokenS*) malloc(sizeof(BrmjTokenS));
+        rizmTokenS* new_token = (rizmTokenS*) malloc(sizeof(rizmTokenS));
         if (new_token == NULL) {
             return NULL;
         }

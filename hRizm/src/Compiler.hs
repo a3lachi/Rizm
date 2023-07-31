@@ -1,5 +1,6 @@
-module Compiler (compiler) where
+module Compiler (compile) where
 
 
-compiler :: String
-compiler =  "This text still suggest an error wow"
+compile :: IO Char -> IO Char 
+compile filePath = filePath
+    

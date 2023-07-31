@@ -11,9 +11,9 @@ int MAX_COMMAND_SIZE = 1024 ;
 
 
 
-void run_Brmj_shell(void){
+void run_rizm_shell(void){
   char command_line[MAX_COMMAND_SIZE];
-  printf("Brmj 0.1.0 [BrmjtSH 0.0.1]\n");
+  printf("rizm 0.1.0 [rizm 0.0.1]\n");
   printf("Type \"quit();\" to leave program, \"copyright\", \"credits\" or \"license\" for more information.\n");
   printf("-|> ");
 
@@ -23,7 +23,7 @@ void run_Brmj_shell(void){
     p_char++;
   }
   *p_char='\0';
-  Brmj_AST* AST ;
+  rizm_AST* AST ;
   int PRINT_TOKENS = 0 ;
   if ( strcmp(command_line,"quit();")==0){
     return;
@@ -45,7 +45,7 @@ void run_Brmj_shell(void){
       return;
     }
     else if(*command_line!='\0'){
-      Brmj_AST* CLI_AST = parse_tokens(tokenize_program(read_shell_command(command_line)));
+      rizm_AST* CLI_AST = parse_tokens(tokenize_program(read_shell_command(command_line)));
       print_ast(CLI_AST,PRINT_TOKENS);
       free_ast(CLI_AST);
     }

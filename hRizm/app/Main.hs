@@ -1,7 +1,13 @@
 module Main (main) where
 
-import Lexer
-import Compiler (compiler)
+-- import Lexer
+import Compiler (compile)
 
-main :: IO ()
-main = print (sk 1 2 4 2)
+program :: IO Char
+program = do
+    putStrLn "Please enter a character:"
+    getChar
+
+main = do 
+    print "TNAKT ALORS"
+    compile program

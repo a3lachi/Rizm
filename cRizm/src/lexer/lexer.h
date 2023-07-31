@@ -71,29 +71,29 @@ typedef struct TOKEN
 
 
 
-typedef struct BrmjToken
+typedef struct rizmToken
 {
   TokenType type ;
   char* value ;
-} BrmjToken ;
+} rizmToken ;
 
-typedef struct BrmjTokenS
+typedef struct rizmTokenS
 {
-  BrmjToken token ;
-  struct BrmjTokenS* next ;
-} BrmjTokenS ;
+  rizmToken token ;
+  struct rizmTokenS* next ;
+} rizmTokenS ;
 
 TokenType tokenize_string(const char* myStr) ;
 TOKEN create_token(TokenType type, const char* value, unsigned int line , unsigned int col ) ;
 TokenType tokenize_char(const char myStr) ;
 
-BrmjToken create_BrmjToken(TokenType type, char* value);
-BrmjToken tokenize_Brmj(char* s);
+rizmToken create_rizmToken(TokenType type, char* value);
+rizmToken tokenize_rizm(char* s);
 char* get_token_type(TokenType type);
-BrmjTokenS* tokenize_program(char** s);
-void print_tokens(BrmjTokenS* tokens);
-void print_tokens_two(BrmjTokenS* tokens ,int indent);
-void process_tokens(BrmjTokenS* tokens);
-void free_tokens(BrmjTokenS* tokens);
-BrmjTokenS* copy_tokens(BrmjTokenS* tokens) ;
+rizmTokenS* tokenize_program(char** s);
+void print_tokens(rizmTokenS* tokens);
+void print_tokens_two(rizmTokenS* tokens ,int indent);
+void process_tokens(rizmTokenS* tokens);
+void free_tokens(rizmTokenS* tokens);
+rizmTokenS* copy_tokens(rizmTokenS* tokens) ;
 #endif 

@@ -1,6 +1,6 @@
-<h1>Brmj</h1>
+<h1>rizm</h1>
 
-Brmj is an interpreted programming language. The language is largely inspired by Python, both in terms of syntax and paradigms.
+rizm is an interpreted programming language. The language is largely inspired by Python, both in terms of syntax and paradigms.
 
 
 <br>

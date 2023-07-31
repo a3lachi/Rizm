@@ -7,7 +7,7 @@
 
 
 
-char* get_structure_type(Brmj_STRUCTURE structure) {
+char* get_structure_type(rizm_STRUCTURE structure) {
   switch (structure) {
     case PROGRAM:
         return "PROGRAM";
@@ -24,7 +24,7 @@ char* get_structure_type(Brmj_STRUCTURE structure) {
   }
 }
 
-char* get_structure_error(Brmj_STRUCTURE_ERROR structure) {
+char* get_structure_error(rizm_STRUCTURE_ERROR structure) {
   switch (structure) {
     case AST_ERROR_SEMICOLON_NFOUND:
         return "AST_ERROR_SEMICOLON_NFOUND";
@@ -57,13 +57,13 @@ char* get_structure_error(Brmj_STRUCTURE_ERROR structure) {
   }
 }
 
-void create_Brmj_AST(BrmjTokenS** tkns,int start_flag,char* value,TokenType type, Brmj_AST** nodes, char* varname){
+void create_rizm_AST(rizmTokenS** tkns,int start_flag,char* value,TokenType type, rizm_AST** nodes, char* varname){
   if (start_flag == 1){
-    (*nodes)->next = malloc(sizeof(Brmj_AST));
+    (*nodes)->next = malloc(sizeof(rizm_AST));
     *nodes = (*nodes)->next;
   }
   else {
-    (*nodes)->childs = malloc(sizeof(Brmj_AST));
+    (*nodes)->childs = malloc(sizeof(rizm_AST));
     *nodes = (*nodes)->childs;
   }
   (*nodes)->structure.s= VARIABLE_DECLARATION ;
@@ -82,11 +82,11 @@ void create_Brmj_AST(BrmjTokenS** tkns,int start_flag,char* value,TokenType type
 }
 
 
-bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** ptokens , TokenType type){
-  BrmjTokenS*  p_tkns=((*ptokens));
+bool parse_declare_variable_tokens(int start_flag , rizm_AST* node,rizmTokenS** ptokens , TokenType type){
+  rizmTokenS*  p_tkns=((*ptokens));
   printf("VVVV %s\n",((*ptokens))->token.value);
   *ptokens=(*ptokens)->next;
-  Brmj_AST* nodes = node ;
+  rizm_AST* nodes = node ;
   
   if ((*ptokens)->token.type == SPACES){
     *ptokens = (*ptokens)->next;
@@ -109,19 +109,19 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                   *ptokens = (*ptokens)->next;
                   if ((*ptokens)->token.type == COMMA){
                     // CUT p_tkns AT COMMA
-                    BrmjTokenS *pt=*ptokens ;
+                    rizmTokenS *pt=*ptokens ;
                     if ((*ptokens)->next)
                       *ptokens = (*ptokens)->next;
                     pt->next=NULL;
-                    BrmjTokenS  *curr_pt=*ptokens;
+                    rizmTokenS  *curr_pt=*ptokens;
                     if ((*ptokens)->token.type == SPACES){
                       *ptokens = (*ptokens)->next;
-                      create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                      create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                       p_tkns = curr_pt ;
                       // UPDATE p_tkns
                     }
                     else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                      create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                      create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                       p_tkns = curr_pt ;
                     }
                     else{
@@ -132,11 +132,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                   else if ((*ptokens)->token.type == SEMICOLON) {
                     printf("L3ARIDA 2\n");
                     // CUT p_tkns at SEMICOLON
-                    BrmjTokenS* pt=*ptokens;
+                    rizmTokenS* pt=*ptokens;
                     if ((*ptokens)->next)
                       *ptokens = (*ptokens)->next;
                     pt->next=NULL;
-                    create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                    create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                     return true;
                   }
                   else {
@@ -145,18 +145,18 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                   }
                 }
                 else if ((*ptokens)->token.type == COMMA){
-                  BrmjTokenS *pt=*ptokens ;
+                  rizmTokenS *pt=*ptokens ;
                   if ((*ptokens)->next)
                     *ptokens = (*ptokens)->next;
                   pt->next=NULL;
-                  BrmjTokenS  *curr_pt=*ptokens;
+                  rizmTokenS  *curr_pt=*ptokens;
                   if ((*ptokens)->token.type == SPACES){
                     *ptokens = (*ptokens)->next;
-                    create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                    create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                     p_tkns = curr_pt ;
                   }
                   else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                    create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                    create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                     p_tkns = curr_pt ;
                   }
                   else{
@@ -165,11 +165,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                   }
                 }
                 else if ((*ptokens)->token.type == SEMICOLON) {
-                  BrmjTokenS* pt=*ptokens;
+                  rizmTokenS* pt=*ptokens;
                   if ((*ptokens)->next)
                     *ptokens = (*ptokens)->next;
                   pt->next=NULL;
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   return true;
                 }
                 else {
@@ -187,21 +187,21 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
               char* value = (char*) (*ptokens)->token.value;
               *ptokens = (*ptokens)->next;
               if ((*ptokens)->token.type == SPACES){
-                // BrmjTokenS* pt=*ptokens;
+                // rizmTokenS* pt=*ptokens;
                 *ptokens = (*ptokens)->next;
                 if ((*ptokens)->token.type == COMMA){
-                  BrmjTokenS *pt=*ptokens ;
+                  rizmTokenS *pt=*ptokens ;
                   if ((*ptokens)->next)
                     *ptokens = (*ptokens)->next;
                   pt->next=NULL;
-                  BrmjTokenS  *curr_pt=*ptokens;
+                  rizmTokenS  *curr_pt=*ptokens;
                   if ((*ptokens)->token.type == SPACES){
                     *ptokens = (*ptokens)->next;
-                    create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                    create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                     p_tkns = curr_pt ;
                   }
                   else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                    create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                    create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                     p_tkns = curr_pt ;
                   }
                   else{
@@ -211,11 +211,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                 }
                 else if ((*ptokens)->token.type == SEMICOLON) {
                   printf("\n\nMMMMMMMMMMMM\n\n");
-                  BrmjTokenS* pt=*ptokens;
+                  rizmTokenS* pt=*ptokens;
                   if ((*ptokens)->next)
                     *ptokens = (*ptokens)->next;
                   pt->next=NULL;
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   return true;
                 }
                 else {
@@ -224,18 +224,18 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                 }
               }
               else if ((*ptokens)->token.type == COMMA){
-                BrmjTokenS *pt=*ptokens ;
+                rizmTokenS *pt=*ptokens ;
                 if ((*ptokens)->next)
                   *ptokens = (*ptokens)->next;
                 pt->next=NULL;
-                BrmjTokenS  *curr_pt=*ptokens;
+                rizmTokenS  *curr_pt=*ptokens;
                 if ((*ptokens)->token.type == SPACES){
                   *ptokens = (*ptokens)->next;
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   p_tkns = curr_pt ;
                 }
                 else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   p_tkns = curr_pt ;
                 }
                 else{
@@ -244,11 +244,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                 }
               }
               else if ((*ptokens)->token.type == SEMICOLON) {
-                BrmjTokenS* pt=*ptokens;
+                rizmTokenS* pt=*ptokens;
                 if ((*ptokens)->next)
                   *ptokens = (*ptokens)->next;
                 pt->next=NULL;
-                create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                 return true;
               }
               else {
@@ -277,18 +277,18 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
               if ((*ptokens)->token.type == SPACES){
                 *ptokens = (*ptokens)->next;
                 if ((*ptokens)->token.type == COMMA){
-                  BrmjTokenS *pt=*ptokens ;
+                  rizmTokenS *pt=*ptokens ;
                   if ((*ptokens)->next)
                     *ptokens = (*ptokens)->next;
                   pt->next=NULL;
-                  BrmjTokenS  *curr_pt=*ptokens;
+                  rizmTokenS  *curr_pt=*ptokens;
                   if ((*ptokens)->token.type == SPACES){
                     *ptokens = (*ptokens)->next;
-                    create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                    create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                     p_tkns = curr_pt ;
                   }
                   else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                    create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                    create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                     p_tkns = curr_pt ;
                   }
                   else{
@@ -297,11 +297,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                   }
                 }
                 else if ((*ptokens)->token.type == SEMICOLON) {
-                  BrmjTokenS* pt=*ptokens;
+                  rizmTokenS* pt=*ptokens;
                   if ((*ptokens)->next)
                     *ptokens = (*ptokens)->next;
                   pt->next=NULL;
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   return true;
                 }
                 else {
@@ -310,18 +310,18 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                 }
               }
               else if ((*ptokens)->token.type == COMMA){
-                BrmjTokenS *pt=*ptokens ;
+                rizmTokenS *pt=*ptokens ;
                 if ((*ptokens)->next)
                   *ptokens = (*ptokens)->next;
                 pt->next=NULL;
-                BrmjTokenS  *curr_pt=*ptokens;
+                rizmTokenS  *curr_pt=*ptokens;
                 if ((*ptokens)->token.type == SPACES){
                   *ptokens = (*ptokens)->next;
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   p_tkns = curr_pt ;
                 }
                 else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   p_tkns = curr_pt ;
                 }
                 else{
@@ -330,11 +330,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                 }
               }
               else if ((*ptokens)->token.type == SEMICOLON) {
-                BrmjTokenS* pt=*ptokens;
+                rizmTokenS* pt=*ptokens;
                 if ((*ptokens)->next)
                   *ptokens = (*ptokens)->next;
                 pt->next=NULL;
-                create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                 return true;
               }
               else {
@@ -353,18 +353,18 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
             if ((*ptokens)->token.type == SPACES){
               *ptokens = (*ptokens)->next;
               if ((*ptokens)->token.type == COMMA){
-                BrmjTokenS *pt=*ptokens ;
+                rizmTokenS *pt=*ptokens ;
                 if ((*ptokens)->next)
                   *ptokens = (*ptokens)->next;
                 pt->next=NULL;
-                BrmjTokenS  *curr_pt=*ptokens;
+                rizmTokenS  *curr_pt=*ptokens;
                 if ((*ptokens)->token.type == SPACES){
                   *ptokens = (*ptokens)->next;
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   p_tkns = curr_pt ;
                 }
                 else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                  create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                  create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                   p_tkns = curr_pt ;
                 }
                 else{
@@ -373,11 +373,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
                 }
               }
               else if ((*ptokens)->token.type == SEMICOLON) {
-                BrmjTokenS* pt=*ptokens;
+                rizmTokenS* pt=*ptokens;
                 if ((*ptokens)->next)
                   *ptokens = (*ptokens)->next;
                 pt->next=NULL;
-                create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                 return true;
               }
               else {
@@ -386,18 +386,18 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
               }
             }
             else if ((*ptokens)->token.type == COMMA){
-              BrmjTokenS *pt=*ptokens ;
+              rizmTokenS *pt=*ptokens ;
               if ((*ptokens)->next)
                 *ptokens = (*ptokens)->next;
               pt->next=NULL;
-              BrmjTokenS  *curr_pt=*ptokens;
+              rizmTokenS  *curr_pt=*ptokens;
               if ((*ptokens)->token.type == SPACES){
                 *ptokens = (*ptokens)->next;
-                create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                 p_tkns = curr_pt ;
               }
               else if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
-                create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+                create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
                 p_tkns = curr_pt ;
               }
               else{
@@ -406,11 +406,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
               }
             }
             else if ((*ptokens)->token.type == SEMICOLON) {
-              BrmjTokenS* pt=*ptokens;
+              rizmTokenS* pt=*ptokens;
               if ((*ptokens)->next)
                 *ptokens = (*ptokens)->next;
               pt->next=NULL;
-              create_Brmj_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
+              create_rizm_AST( &p_tkns , start_flag, value, type,  &nodes,  varname);
               return true;
             }
             else {
@@ -443,11 +443,11 @@ bool parse_declare_variable_tokens(int start_flag , Brmj_AST* node,BrmjTokenS** 
 }
 
 
-Brmj_AST* parse_tokens(BrmjTokenS* tokens) {
+rizm_AST* parse_tokens(rizmTokenS* tokens) {
   printf("-------- PARSER ---------------------------------------------------------------------------------------------\n");
   if (tokens){
-    BrmjTokenS* ptokens = tokens ;
-    Brmj_AST* pnodes = malloc(sizeof(Brmj_AST)) , *nodes ;
+    rizmTokenS* ptokens = tokens ;
+    rizm_AST* pnodes = malloc(sizeof(rizm_AST)) , *nodes ;
     nodes = pnodes ;
     pnodes->structure.s= PROGRAM ;
     int start_flag = 0;
@@ -493,15 +493,15 @@ Brmj_AST* parse_tokens(BrmjTokenS* tokens) {
 
 
 
-void print_ast_recursive(Brmj_AST* nodes){
-  Brmj_AST* pnodes = nodes ;
+void print_ast_recursive(rizm_AST* nodes){
+  rizm_AST* pnodes = nodes ;
   while(pnodes){
     pnodes->is_error==1 ? printf("[x] - %s\n",get_structure_error(pnodes->structure.s_error)) :  printf("[x] - %s\n",get_structure_type(pnodes->structure.s));
     pnodes = pnodes->next ;
   }
 }
 
-void print_node_json(Brmj_AST* node, int indent_level , int print_tokens) {
+void print_node_json(rizm_AST* node, int indent_level , int print_tokens) {
     if (node == NULL) {
       printf("{}");
         return;
@@ -549,19 +549,17 @@ void print_node_json(Brmj_AST* node, int indent_level , int print_tokens) {
 }
 
 
-void print_ast(Brmj_AST* nodes, int print_tokens){
+void print_ast(rizm_AST* nodes, int print_tokens){
   printf("-------- AST ---------------------------------------------------------------------------------------------\n");
   print_node_json( nodes, 0 , print_tokens);
   printf("\n----------------------------------------------------------------------------------------------------------\n");
 }
 
 
-
-
-void free_ast(Brmj_AST* nodes){
-  Brmj_AST* curr = nodes;
+void free_ast(rizm_AST* nodes){
+  rizm_AST* curr = nodes;
    while (curr != NULL) {
-      Brmj_AST* temp = curr;
+      rizm_AST* temp = curr;
       curr = curr->next;
       free(temp);
    }

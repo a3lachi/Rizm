@@ -8,3 +8,8 @@ string my_str = "Random text", var_str =         "Cars do travel" , curr_str_56 
 int b = 56 ;
 
 string final_test_variable = "TEST ✅✅✅" ;
+
+
+
+
+int myint = 567 ;
