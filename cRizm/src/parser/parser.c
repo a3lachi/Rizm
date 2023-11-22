@@ -477,6 +477,9 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
         row+= atoi(ptokens->token.value);
         ptokens = ptokens->next;
       }
+      else if (ptokens->token.type == PRINT){
+        
+      }
       else {
         printf("THRK %s\n",get_token_type(ptokens->token.type));
         ptokens = ptokens->next;

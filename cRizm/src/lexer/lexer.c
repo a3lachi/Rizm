@@ -48,12 +48,12 @@ TokenType tokenize_char(const char myStr){
    else if (myStr == '-') return MINUS;
    else if (myStr == '*') return MULTIPLY;
    else if (myStr == '/') return DIVIDE;
-   else if (myStr == ' ') return SPACE;
+//    else if (myStr == ' ') return SPACE;
    else if (myStr == '>') return GREATER;
    else if (myStr == '<') return LESS;
    else if (myStr == '[') return LBRACKET;
    else if (myStr == ',') return COMMA;
-   else if (myStr == '\n') return NEWLINE;
+//    else if (myStr == '\n') return NEWLINE;
    else if (myStr == ']') return RBRACKET;
    else if (is_word_numeric(myStr)==true) return UKNOWN_INT;
    else if (is_word_char(myStr)==true) return UKNOWN_STRING;

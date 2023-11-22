@@ -12,7 +12,7 @@
  *    INSTALL :
  *      run : make clean ; make ;
  *      Now you have an executable file "rizm" which will be the interpreter for 
- *      .la files. 
+ *      .rm files. 
  *      NOTE : make sure "rizm" executable have the right permissions
  *             you can use : chown 755 ./rizm
  *    
@@ -34,11 +34,15 @@ int main(int argc, char* argv[]) {
     rizmTokenS* TOKENS = tokenize_program(PROGRAM) ;
     print_tokens(TOKENS);
 
+
+
+
     rizm_AST* AST = parse_tokens(TOKENS);
     int PRINT_TOKENS = 1 ;
     print_ast(AST,PRINT_TOKENS);
 
-    printf("HEHOOOOOOo");
+
+
     free(PROGRAM);
     free_tokens(TOKENS);
     free_ast(AST);
