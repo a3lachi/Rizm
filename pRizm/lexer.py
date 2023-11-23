@@ -8,7 +8,9 @@ class Lexer:
         print('[x] - Initializing the lexer...')
 
     def tokenize(self):
-        print(self.program)
+
+        space_list = self.program.split(' ')
+        print(space_list)
 
 
 
@@ -79,9 +81,3 @@ class RizmTokenS:
     next: 'RizmTokenS' = None
 
 
-
-
-aa = TokenType.INTEGER
-
-
-print('Lexer working perfectly')
