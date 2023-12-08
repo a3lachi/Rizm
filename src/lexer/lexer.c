@@ -203,15 +203,6 @@ bool is_char_op(const char c){
 	}
 }
 
-TOKEN create_token(TokenType type, const char* value, unsigned int line , unsigned int col ) {
-   TOKEN token ;
-   token.type = type ;
-   token.value = value ;
-   token.line = line ;
-   token.col = col ;
-   return token ;
-}
-
 rizmToken create_rizmToken(TokenType type, char* value){
    rizmToken token ;
    token.type = type ; 

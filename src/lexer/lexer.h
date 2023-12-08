@@ -60,17 +60,6 @@ typedef enum {
   NEWLINE,
 } TokenType ;
 
-
-typedef struct TOKEN
-{
-  TokenType type ;
-  const char* value ;
-  unsigned int line ;
-  unsigned int col ;
-} TOKEN ;
-
-
-
 typedef struct rizmToken
 {
   TokenType type ;
@@ -84,7 +73,6 @@ typedef struct rizmTokenS
 } rizmTokenS ;
 
 TokenType tokenize_string(const char* myStr) ;
-TOKEN create_token(TokenType type, const char* value, unsigned int line , unsigned int col ) ;
 TokenType tokenize_char(const char myStr) ;
 
 rizmToken create_rizmToken(TokenType type, char* value);
@@ -96,4 +84,5 @@ void print_tokens_two(rizmTokenS* tokens ,int indent);
 void process_tokens(rizmTokenS* tokens);
 void free_tokens(rizmTokenS* tokens);
 rizmTokenS* copy_tokens(rizmTokenS* tokens) ;
+
 #endif 
