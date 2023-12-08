@@ -472,6 +472,9 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
           return nodes;
         }
       }
+      else if (ptokens->token.type == IF){
+        
+      }
       else if(ptokens->token.type == NEWLINES) {
         printf("SKIP %s\n",get_token_type(ptokens->token.type));
         row+= atoi(ptokens->token.value);
