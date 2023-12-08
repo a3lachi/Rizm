@@ -1,8 +1,8 @@
 <h1>rizm</h1>
 
-rizm is an interpreted programming language. The language is largely inspired by Python, both in terms of syntax and paradigms.
+Rizm is an interpreted programming language. The language is largely inspired by Python, both in terms of syntax and paradigms.
 
-> The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm" <br>
+> The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm" 
 
 
 <br>
