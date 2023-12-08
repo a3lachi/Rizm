@@ -32,16 +32,10 @@ int main(int argc, char* argv[]) {
     char** PROGRAM = read_program(argv[1]); 
     
     rizmTokenS* TOKENS = tokenize_program(PROGRAM) ;
-    print_tokens(TOKENS);
-
-
-
 
     rizm_AST* AST = parse_tokens(TOKENS);
     int PRINT_TOKENS = 1 ;
     print_ast(AST,PRINT_TOKENS);
-
-
 
     free(PROGRAM);
     free_tokens(TOKENS);

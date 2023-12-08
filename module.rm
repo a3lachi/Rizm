@@ -5,3 +5,4 @@ int my_var =10, var=20, var1= 30,curr_var_56 =40 ;
 float my_float = 3.14          , curr_float_56=4.56, var_float         =         7.89           ;
 bool          my_bool =          true , var_bool       =false,       curr_bool_56 = true       ;
 
+

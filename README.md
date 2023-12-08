@@ -1,34 +1,88 @@
+<h1>rizm</h1>
 
-# Rizm
-This project involves the development of a compiled programming language in C and Python.
-The main goal of this project is to **benchmark** different programming languages and **deeply understand** their core paradigms.
-
-The inspiration behind this project is to "really know" : What happens when I tell Python to print('I am printing') ?  How the array selection operator [] is used in the built-in types ? How C agregates data ? how to override built-in features ?
+rizm is an interpreted programming language. The language is largely inspired by Python, both in terms of syntax and paradigms.
 
 
 <br>
-
-
-
-Rizm, at this stage, is not yet designed (precisely, I still don't know what happens after generating the AST tree, I served 2 dishes so far, a lexer and a parser), but its goal is to offer as much **precision** as possible, **with**, powerful abstraction layers. This I think will make of it a lifetime project that will integrate all precision models I can construct in the remaining time I have alive.
-
 <br>
 
-> "**Rizm**" is derived from "Khawarizmia" which translates from arabic to "Algorithm" <br>
 
-> The word "algorithm" is derived from the name "AlKhwarizmi". Latinized as "Algoritmi", which was later translated into English as "Algorithm" <br>
+Examples
+--------
 
-<br>
+#### "hello world"
 
-# Compiler 
--**Lexer**: Breaks down the input source code into a series of tokens.
+<pre>
+<i># simple "hello world" program</i>
+<b>print</b>('hello world'); 
+<b>print</b>("hello world"); <i># strings can be delimited by either " or '</i>
+</pre>
 
--**Parser**: Generates from the tokens an abstract syntax tree (AST) that represents the structure of the program.
+#### Arithmetic
 
--**CodeGenerator**: Responsible for generating executable code from the AST.
+<pre>
+<b>print</b>(((50 - 5*6)/4)**2);  <i># prints 25</i>
+</pre>
 
--**Optimizer**: Optimize the generated code to improve performance or reduce code size.
+#### `if` statements
 
+<pre>
+<b>int</b> b = 1;
+<b>if</b>(b) {
+    <b>print</b>("b is non-zero!");
+} <b>else</b> {
+    <b>print</b>("b is zero!");
+}
+</pre>
 
+#### `while` statements
 
+<pre>
+<i># print integers from 1 to 9:</i>
+<b>int</b> a = 1;
+<b>while</b>(a < 10) {
+    <b>print</b>(a);
+    a += 1;
+}
+</pre>
 
+#### `for` statements
+
+<pre>
+<i># equivalent of while-loop above:</i>
+<b>for</b> a <b>in</b> (1:10) {  <i># range through integers from 1 to 9</i>
+    <b>print</b>(a);
+}
+<b>for</b> a <b>in</b> (1:40:3) {  <i># range through integers from 1 to 40 with a step of 3</i>
+    <b>print</b>(a);
+}
+</pre>
+
+#### Functions
+
+<pre>
+<i># factorial function</i>
+<b>def</b> fact(n) {
+    <b>if</b>(n < 2) { <b>return</b> 1; } <b>else</b> { <b>return</b> n * fact(n - 1); }
+}
+
+<i># hypotenuse function</i>
+<b>def</b> hypot(a, b) {
+    <i># functions can be nested:</i>
+    <b>def</b> square(x) {
+        <b>return</b> x**2;
+    }
+
+    <i># functions can be anonymous:</i>
+    <b>def int</b> sqrt = (: $1 ** 0.5);
+
+    <b>return</b> sqrt(square(a) + square(b));
+}
+</pre>
+
+#### `import` statements
+
+<pre>
+<i>#import other modules</i>
+<b>import</b> 'module/utils';
+</pre>
