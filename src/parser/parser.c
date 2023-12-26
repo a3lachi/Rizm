@@ -83,13 +83,13 @@ void create_rizm_AST(rizmTokenS** tkns,int start_flag,char* value,TokenType type
 
 
 bool parse_declare_variable_tokens(int start_flag , rizm_AST* node,rizmTokenS** ptokens , TokenType type){
-  rizmTokenS*  p_tkns=((*ptokens));
-  printf("VVVV %s\n",((*ptokens))->token.value);
-  *ptokens=(*ptokens)->next;
-  rizm_AST* nodes = node ;
+    rizmTokenS*  p_tkns=((*ptokens));
+    printf("Token value : %s\n",((*ptokens))->token.value);
+    *ptokens=(*ptokens)->next;
+    rizm_AST* nodes = node ;
   
-  if ((*ptokens)->token.type == SPACES){
-    *ptokens = (*ptokens)->next;
+//   if ((*ptokens)->token.type == SPACES){
+    // *ptokens = (*ptokens)->next;
     while ((*ptokens)->token.type != SEMICOLON){
       if ((*ptokens)->token.type == UKNOWN_STRING || (*ptokens)->token.type == UKNOWN_VARNAME){
         
@@ -434,12 +434,12 @@ bool parse_declare_variable_tokens(int start_flag , rizm_AST* node,rizmTokenS** 
         return false ;
       }
     }
-    return true ;
-  }
-  else {
-    printf("[x] - Error : %s\n",get_structure_error(AST_ERROR_SPACE_NFOUND));
-  }
-  return false;
+    // return true ;
+//   }
+//   else {
+//     printf("[x] - Error : %s\n",get_structure_error(AST_ERROR_SPACE_NFOUND));
+//   }
+    return false;
 }
 
 
@@ -456,7 +456,7 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
     while(ptokens){
       if (ptokens->token.type == INTEGER || ptokens->token.type == BOOL || ptokens->token.type == STRING || ptokens->token.type == FLOAT ){
         TokenType type = ptokens->token.type == INTEGER ? UKNOWN_INT :   ptokens->token.type == BOOL  ? VALUE_BOOL : ptokens->token.type == STRING ? VALUE_STRING : UKNOWN_FLOAT  ;
-        printf("ZID TO %s \n",get_token_type(ptokens->token.type));
+        printf("Token Type : %s \n",get_token_type(ptokens->token.type));
         if (parse_declare_variable_tokens(start_flag,  pnodes  ,&ptokens,type)==true){
           if (start_flag==0)
             pnodes = pnodes->childs;

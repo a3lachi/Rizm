@@ -222,22 +222,7 @@ void process_tokens(rizmTokenS* tokens){
    char* countStr  ;
    while (ptokens){
       if (ptokens->token.type == SPACE) {
-        //  headSpaces = ptokens ;
-        //  count++;
-        //  ptokens=ptokens->next;
-        //  while (ptokens && ptokens->token.type == SPACE){
-        //     count++;
-        //     rizmTokenS* currtoken = ptokens ;
-        //     ptokens=ptokens->next;
-        //     free(currtoken);
-        //  }
-        //  headSpaces->next = ptokens ;
-        //  countStr = malloc(sizeof(char) * 10);
-        //  snprintf(countStr, 10,"%d", count);
-        //  headSpaces->token.value = countStr;
-        //  headSpaces->token.type = SPACES;
-        //  count = 0;
-        
+        *ptokens=*(ptokens->next);
       }
       else if (ptokens && ptokens->token.type == NEWLINE) {
          headSpaces = ptokens ;
