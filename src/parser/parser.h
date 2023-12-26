@@ -26,6 +26,7 @@ typedef enum {
   VARIABLE_DECLARATION,
   EXPRESSION_STATEMENT, // print()
   WHILE_STATEMENT,
+  IF_STATEMENT,
 } rizm_STRUCTURE ;
 
 
@@ -44,6 +45,12 @@ typedef enum {
   AST_ERROR_AFTER_VALUE,
   AST_ERROR_AFTER_COMMA,
   AST_ERROR_EQUAL_NFOUND,
+  AST_ERROR_LPAREN_NFOUND,
+  AST_ERROR_RPAREN_NFOUND,
+  AST_ERROR_LBRACKET_NFOUND,
+  AST_ERROR_RBRACKET_NFOUND,
+  AST_ERROR_LBRACE_NFOUND,
+  AST_ERROR_RBRACE_NFOUND,
 } rizm_STRUCTURE_ERROR ;
 
 
@@ -71,6 +78,11 @@ typedef struct rizm_AST {
       char* varname ;
       TokenType type ;
     } CONSTANT;
+
+    struct {
+        rizmTokenS bool_tokens ;
+        rizmTokenS body_tokens ;
+    } IF_DECLARATION ;
   } DATA;
 
   struct rizm_AST* next ;
@@ -84,7 +96,7 @@ char* get_structure_error(rizm_STRUCTURE_ERROR serr);
 void create_rizm_AST(rizmTokenS** tkns , int start_flag , char* value,TokenType type, rizm_AST** nodes, char* varname);
 rizm_AST* parse_tokens(rizmTokenS* tokens);
 bool parse_declare_variable_tokens(int start_flag , rizm_AST* nodes,rizmTokenS** tkns , TokenType type);
-
+bool parse_if_statement(rizm_AST* nodes , rizmTokenS** tkns);
 
 void print_node_json(rizm_AST* node, int indent_level , int print_tokens) ;
 rizm_AST* parse_tokens(rizmTokenS* tokens);

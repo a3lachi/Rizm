@@ -1,8 +1,26 @@
+int my_var=45 ;
+
 if (my_var > 50) {
 	print("Its going as planned");
 }
 
 
+
+
 if(true){
 	do_nothing();
+}
+
+if (my_var=56 & var_bool) {
+    do_something() ;
+}
+
+if ( my_num>45 | my_var2<45.6 | my_var3==45) {
+    do_this();
+}
+
+bool my_bool=true;
+
+if (var=="it" & other_var == 459) {
+    process(var,other_var);
 }

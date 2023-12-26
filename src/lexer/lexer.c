@@ -52,6 +52,8 @@ TokenType tokenize_char(const char myStr){
    else if (myStr == '>') return GREATER;
    else if (myStr == '<') return LESS;
    else if (myStr == '[') return LBRACKET;
+   else if (myStr == '|') return OR_OP;
+   else if (myStr == '&') return AND_OP;
    else if (myStr == ',') return COMMA;
    else if (myStr == '\n') return NEWLINE;
    else if (myStr == ']') return RBRACKET;
@@ -64,6 +66,10 @@ char* get_token_type(TokenType type) {
    switch (type) {
       case INTEGER:
          return "INTEGER";
+      case AND_OP :
+        return "AND";
+      case OR_OP :
+        return "OR";
       case FLOAT:
          return "FLOAT";
       case STRING:
@@ -166,6 +172,10 @@ char* get_token_type(TokenType type) {
          return "RANGE_SKIP";
       case STRING_INT:
          return "STRING_INT";
+      case VERTICAL_LINE : 
+         return "VERTICAL_LINE";
+      case DOUBLE_EQUAL :
+         return "DOUBLE_EQUAL";
       default:
          return NULL;
    }
@@ -223,6 +233,15 @@ void process_tokens(rizmTokenS* tokens){
    while (ptokens){
       if (ptokens->token.type == SPACE) {
         *ptokens=*(ptokens->next);
+      }
+      else if (ptokens->token.type == EQUAL && (ptokens->next)->token.type == EQUAL)
+      {
+        printf("Found a double equal \n");
+        (*ptokens).token.type = DOUBLE_EQUAL ;
+        (*ptokens).token.value ="==";
+        *(ptokens->next) = *(ptokens->next->next);
+
+
       }
       else if (ptokens && ptokens->token.type == NEWLINE) {
          headSpaces = ptokens ;

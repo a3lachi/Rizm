@@ -58,6 +58,10 @@ typedef enum {
   STRING_INT,
   VALUE_STRING,
   NEWLINE,
+  VERTICAL_LINE,
+  DOUBLE_EQUAL,
+  AND_OP,
+  OR_OP,
 } TokenType ;
 
 typedef struct rizmToken

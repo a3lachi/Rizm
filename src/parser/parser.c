@@ -38,6 +38,10 @@ char* get_structure_error(rizm_STRUCTURE_ERROR structure) {
         return "AST_ERROR_VARNAME_NFOUND";
     case AST_ERROR_AFTER_EQUAL:
         return "AST_ERROR_AFTER_EQUAL";
+    case AST_ERROR_LBRACKET_NFOUND :
+        return "AST_ERROR_LBRACKET_NFOUND";
+    case AST_ERROR_RBRACKET_NFOUND :
+        return "AST_ERROR_RBRACKET_NFOUND";
     case AST_ERROR_VALUE_NFOUND:
         return "AST_ERROR_VALUE_NFOUND";
     case AST_ERROR_AFTER_COMMA:
@@ -52,6 +56,14 @@ char* get_structure_error(rizm_STRUCTURE_ERROR structure) {
         return "AST_ERROR_AFTER_VALUE";
     case AST_ERROR_EQUAL_NFOUND:
         return "AST_ERROR_EQUAL_NFOUND";
+    case AST_ERROR_LPAREN_NFOUND :
+        return "AST_ERROR_LPAREN_NFOUND";
+    case AST_ERROR_RPAREN_NFOUND :
+        return "AST_ERROR_RPAREN_NFOUND";
+    case AST_ERROR_LBRACE_NFOUND :
+        return "AST_ERROR_LBRACE_NFOUND";
+    case AST_ERROR_RBRACE_NFOUND :
+        return "AST_ERROR_RBRACE_NFOUND";
     default:
         return NULL;
   }
@@ -443,6 +455,52 @@ bool parse_declare_variable_tokens(int start_flag , rizm_AST* node,rizmTokenS** 
 }
 
 
+bool parse_if_statement(rizm_AST* nodes , rizmTokenS** tkns) {
+    rizmTokenS *ptoken = *tkns;
+    if (ptoken->token.type == IF) {
+        printf("Starting the parser..\n");
+        ptoken = ptoken->next ;
+        if (ptoken->token.type == LPAREN) {
+            rizmTokenS *pptokens = ptoken ;
+            rizmTokenS *ppptokens = pptokens;
+            ptoken = ptoken->next ;
+            while (ptoken->token.type != RPAREN) {
+                ptoken = ptoken->next;
+                ppptokens = ppptokens->next;
+            }
+            ppptokens->next=NULL;
+            pptokens = pptokens->next;
+            printf("[x] - IF statement bool expression : \n");
+            print_tokens(pptokens);
+            printf("Token type after RPAREN %s\n",get_token_type(ptoken->next->token.type));
+            if (ptoken->next->token.type == LBRACE) {
+                rizmTokenS *body_tokens = ptoken ;
+                rizmTokenS *pbody = body_tokens ;
+                ptoken = ptoken->next->next ;
+                while (ptoken->token.type != RBRACE) {
+                    ptoken = ptoken->next;
+                    pbody = pbody->next;
+                }
+                pbody->next = NULL;
+                body_tokens = body_tokens->next;
+                printf("[x] - BODY\n");
+                print_tokens(body_tokens);
+            }
+            else {
+                printf("[x] - Error : %s\n",get_structure_error(AST_ERROR_LBRACE_NFOUND));
+                printf("-------------------------------------------------------------------------------------------------------------\n\n\n\n");
+            }
+            *tkns = ptoken;
+            return true;
+        }
+        else {
+            printf("[x] - Error : %s\n",get_structure_error(AST_ERROR_LPAREN_NFOUND));
+            printf("-------------------------------------------------------------------------------------------------------------\n\n\n\n");
+        }
+    }
+    return false;
+}
+
 rizm_AST* parse_tokens(rizmTokenS* tokens) {
   printf("-------- PARSER ---------------------------------------------------------------------------------------------\n");
   if (tokens){
@@ -473,28 +531,29 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
         }
       }
       else if (ptokens->token.type == IF){
-      	printf("YESSS\n");  
-        ptokens = ptokens->next;
-
-        if (ptokens->token.type == SPACE) {
-            ptokens = ptokens->next;
-        }
-
-        if (ptokens->token.type == LPAREN){
-            ptokens = ptokens->next;
+        if (parse_if_statement(nodes,&ptokens)==true) {
+            printf("Parsing IF statement : %s\n",get_token_type(ptokens->token.type))  ;
+            // ptokens = ptokens->next;
 
         }
+        else {
+            printf("[x] - Error in line %d : %s\n", row , "AST_IF_STATEMENT_ERROR");
+            printf("-------------------------------------------------------------------------------------------------------------\n\n\n\n");
+            return nodes;
+        }
+
+        
       }
       else if(ptokens->token.type == NEWLINES) {
-        printf("SKIP %s\n",get_token_type(ptokens->token.type));
         row+= atoi(ptokens->token.value);
         ptokens = ptokens->next;
       }
       else if (ptokens->token.type == PRINT){
-        
+        printf("WTF\n");
+        ptokens = ptokens->next;
       }
       else {
-        printf("Else %s\n",get_token_type(ptokens->token.type));
+        printf("[x] - Else Token : %s\n",get_token_type(ptokens->token.type));
         ptokens = ptokens->next;
       }
       
