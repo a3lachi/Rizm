@@ -1,0 +1,8 @@
+if (my_var > 50) {
+	print("Its going as planned");
+}
+
+
+if(true){
+	do_nothing();
+}

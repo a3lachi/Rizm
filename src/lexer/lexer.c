@@ -48,12 +48,12 @@ TokenType tokenize_char(const char myStr){
    else if (myStr == '-') return MINUS;
    else if (myStr == '*') return MULTIPLY;
    else if (myStr == '/') return DIVIDE;
-//    else if (myStr == ' ') return SPACE;
+   else if (myStr == ' ') return SPACE;
    else if (myStr == '>') return GREATER;
    else if (myStr == '<') return LESS;
    else if (myStr == '[') return LBRACKET;
    else if (myStr == ',') return COMMA;
-//    else if (myStr == '\n') return NEWLINE;
+   else if (myStr == '\n') return NEWLINE;
    else if (myStr == ']') return RBRACKET;
    else if (is_word_numeric(myStr)==true) return UKNOWN_INT;
    else if (is_word_char(myStr)==true) return UKNOWN_STRING;
@@ -222,21 +222,22 @@ void process_tokens(rizmTokenS* tokens){
    char* countStr  ;
    while (ptokens){
       if (ptokens->token.type == SPACE) {
-         headSpaces = ptokens ;
-         count++;
-         ptokens=ptokens->next;
-         while (ptokens && ptokens->token.type == SPACE){
-            count++;
-            rizmTokenS* currtoken = ptokens ;
-            ptokens=ptokens->next;
-            free(currtoken);
-         }
-         headSpaces->next = ptokens ;
-         countStr = malloc(sizeof(char) * 10);
-         snprintf(countStr, 10,"%d", count);
-         headSpaces->token.value = countStr;
-         headSpaces->token.type = SPACES;
-         count = 0;
+        //  headSpaces = ptokens ;
+        //  count++;
+        //  ptokens=ptokens->next;
+        //  while (ptokens && ptokens->token.type == SPACE){
+        //     count++;
+        //     rizmTokenS* currtoken = ptokens ;
+        //     ptokens=ptokens->next;
+        //     free(currtoken);
+        //  }
+        //  headSpaces->next = ptokens ;
+        //  countStr = malloc(sizeof(char) * 10);
+        //  snprintf(countStr, 10,"%d", count);
+        //  headSpaces->token.value = countStr;
+        //  headSpaces->token.type = SPACES;
+        //  count = 0;
+        
       }
       else if (ptokens && ptokens->token.type == NEWLINE) {
          headSpaces = ptokens ;
@@ -336,6 +337,19 @@ rizmTokenS* tokenize_program(char** s) {
    }
    process_tokens(tokens);
    return tokens ;
+}
+
+void remove_space(rizmTokenS* tokens) {
+    rizmTokenS* ptokens = tokens ;
+    printf("STARTING SPACES REMOVAL\n");
+    while (ptokens) {
+        if (ptokens->token.type == SPACES) {
+            printf("Found space\n");
+            *ptokens = *(ptokens ->next);
+        }
+        ptokens = ptokens->next;
+    }
+
 }
 
 void print_tokens(rizmTokenS* tokens) {

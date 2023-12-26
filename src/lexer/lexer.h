@@ -74,9 +74,9 @@ typedef struct rizmTokenS
 
 TokenType tokenize_string(const char* myStr) ;
 TokenType tokenize_char(const char myStr) ;
-
 rizmToken create_rizmToken(TokenType type, char* value);
 rizmToken tokenize_rizm(char* s);
+void remove_space(rizmTokenS* tokens);
 char* get_token_type(TokenType type);
 rizmTokenS* tokenize_program(char** s);
 void print_tokens(rizmTokenS* tokens);

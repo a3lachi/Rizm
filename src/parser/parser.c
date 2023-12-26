@@ -473,7 +473,17 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
         }
       }
       else if (ptokens->token.type == IF){
-        
+      	printf("YESSS\n");  
+        ptokens = ptokens->next;
+
+        if (ptokens->token.type == SPACE) {
+            ptokens = ptokens->next;
+        }
+
+        if (ptokens->token.type == LPAREN){
+            ptokens = ptokens->next;
+
+        }
       }
       else if(ptokens->token.type == NEWLINES) {
         printf("SKIP %s\n",get_token_type(ptokens->token.type));
@@ -484,7 +494,7 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
         
       }
       else {
-        printf("THRK %s\n",get_token_type(ptokens->token.type));
+        printf("Else %s\n",get_token_type(ptokens->token.type));
         ptokens = ptokens->next;
       }
       
