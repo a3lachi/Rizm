@@ -19,6 +19,8 @@ char* get_structure_type(rizm_STRUCTURE structure) {
         return "EXPRESSION_STATEMENT";
     case WHILE_STATEMENT:
         return "WHILE_STATEMENT";
+    case IF_STATEMENT : 
+        return "IF_STATEMENT";
     default:
         return NULL;
   }
@@ -482,16 +484,24 @@ bool parse_if_statement(rizm_AST* nodes , rizmTokenS** tkns) {
                     pbody = pbody->next;
                 }
                 pbody->next = NULL;
-                body_tokens = body_tokens->next;
+                body_tokens = body_tokens->next->next;
                 printf("[x] - BODY\n");
                 print_tokens(body_tokens);
+
+                rizm_AST *if_ast = malloc(sizeof(rizm_AST));
+                if_ast->DATA.IF_DECLARATION.bool_tokens = *pptokens;
+                if_ast->DATA.IF_DECLARATION.body_tokens = *body_tokens;
+                if_ast->structure.s = IF_STATEMENT;
+                nodes->next = if_ast;
+                print_ast(if_ast,1);
+                return true;
             }
             else {
                 printf("[x] - Error : %s\n",get_structure_error(AST_ERROR_LBRACE_NFOUND));
                 printf("-------------------------------------------------------------------------------------------------------------\n\n\n\n");
+                return false;
             }
             *tkns = ptoken;
-            return true;
         }
         else {
             printf("[x] - Error : %s\n",get_structure_error(AST_ERROR_LPAREN_NFOUND));
@@ -534,6 +544,7 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
         if (parse_if_statement(nodes,&ptokens)==true) {
             printf("Parsing IF statement : %s\n",get_token_type(ptokens->token.type))  ;
             // ptokens = ptokens->next;
+            nodes = nodes->next;
 
         }
         else {
@@ -608,6 +619,9 @@ void print_node_json(rizm_AST* node, int indent_level , int print_tokens) {
       printf("\033[0m,\n");
     }
     printf("\033[0m");
+    if (node->structure.s == IF_STATEMENT) {
+        printf("Printing AST");
+    }
     if (print_tokens == 1) {
       printf("%*s\"TOKENS\": \n", indent_level + 2, "");
       print_tokens_two(node->tokens,indent_level+2);
