@@ -494,12 +494,12 @@ bool parse_if_statement(rizm_AST* nodes , rizmTokenS** tkns) {
                 // if_ast->structure.s = IF_STATEMENT;
                 // nodes->next = if_ast;
                 // print_ast(if_ast,1);
+                *tkns = ptoken;
                 return true;
             }
             else {
                 printf("[x] - Error : %s\n",get_structure_error(AST_ERROR_LBRACE_NFOUND));
                 printf("-------------------------------------------------------------------------------------------------------------\n\n\n\n");
-                return false;
             }
             *tkns = ptoken;
         }
@@ -544,7 +544,7 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
         if (parse_if_statement(nodes,&ptokens)==true) {
             printf("Parsing IF statement : %s\n",get_token_type(ptokens->token.type))  ;
             // ptokens = ptokens->next;
-            nodes = nodes->next;
+            // nodes = nodes->next;
 
         }
         else {
