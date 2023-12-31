@@ -61,6 +61,7 @@ typedef enum {
   VERTICAL_LINE,
   DOUBLE_EQUAL,
   AND_OP,
+  TAB,
   OR_OP,
 } TokenType ;
 

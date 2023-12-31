@@ -1,14 +1,14 @@
 int my_var=45 ;
 
 if (my_var > 50) {
-	print("Its going as planned");
+    print("Its going as planned");
 }
 
 
 
 
 if(true){
-	do_nothing();
+    do_nothing();
 }
 
 if (my_var=56 & var_bool) {

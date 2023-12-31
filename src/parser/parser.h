@@ -80,8 +80,8 @@ typedef struct rizm_AST {
     } CONSTANT;
 
     struct {
-        rizmTokenS bool_tokens ;
-        rizmTokenS body_tokens ;
+        rizmTokenS* bool_tokens ;
+        rizmTokenS* body_tokens ;
     } IF_DECLARATION ;
   } DATA;
 

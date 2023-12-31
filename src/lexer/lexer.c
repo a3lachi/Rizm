@@ -8,30 +8,31 @@
 
 
 TokenType tokenize_string(const char* myStr){
-   if (strcmp(myStr, "int") == 0) return INTEGER;
-   else if (strcmp(myStr, "string") == 0) return STRING;
-   else if (strcmp(myStr, "float") == 0) return FLOAT;
-   else if (strcmp(myStr, "true") == 0) return VALUE_BOOL;
-   else if (strcmp(myStr, "false") == 0) return VALUE_BOOL;
-   else if (strcmp(myStr, "bool") == 0) return BOOL;
-   else if (strcmp(myStr, "if") == 0) return IF;
-   else if (strcmp(myStr, "else") == 0) return ELSE;
-   else if (strcmp(myStr, "while") == 0) return WHILE;
-   else if (strcmp(myStr, "print") == 0) return PRINT;
-   else if (strcmp(myStr, "import") == 0) return IMPORT;
-   else if (strcmp(myStr, "//") == 0) return COMMENT;
-   else if (strcmp(myStr, "return") == 0) return RETURN;
-   else if (strcmp(myStr, "for") == 0) return FOR;
-   else if (strcmp(myStr, "in") == 0) return IN;
-   else if (is_string_int(myStr)==true) return UKNOWN_INT;
-   else if (is_string_text(myStr)==true) return UKNOWN_STRING;
-   else if (is_string_float(myStr)==true) return UKNOWN_FLOAT;
-   else if (is_string_varname(myStr)==true) return UKNOWN_VARNAME;
-   else if (is_string_simple_range(myStr)==true) return RANGE;
-   else if (is_string_skip_range(myStr)==true) return RANGE_SKIP;
-   else if (is_string_textint(myStr)==true) return STRING_INT;
-   else if (is_string_path(myStr)==true) return PATH;
-   return UKNOWN;
+    if (strcmp(myStr, "int") == 0) return INTEGER;
+    else if (strcmp(myStr, "string") == 0) return STRING;
+    else if (strcmp(myStr, "float") == 0) return FLOAT;
+    else if (strcmp(myStr, "true") == 0) return VALUE_BOOL;
+    else if (strcmp(myStr, "false") == 0) return VALUE_BOOL;
+    else if (strcmp(myStr, "bool") == 0) return BOOL;
+    else if (strcmp(myStr, "if") == 0) return IF;
+    else if (strcmp(myStr, "else") == 0) return ELSE;
+    else if (strcmp(myStr, "while") == 0) return WHILE;
+    else if (strcmp(myStr, "print") == 0) return PRINT;
+    else if (strcmp(myStr, "import") == 0) return IMPORT;
+    else if (strcmp(myStr, "//") == 0) return COMMENT;
+    else if (strcmp(myStr, "return") == 0) return RETURN;
+    else if (strcmp(myStr, "for") == 0) return FOR;
+    else if (strcmp(myStr, "in") == 0) return IN;
+    else if (strcmp(myStr, "    ") == 0) return TAB;
+    else if (is_string_int(myStr)==true) return UKNOWN_INT;
+    else if (is_string_text(myStr)==true) return UKNOWN_STRING;
+    else if (is_string_float(myStr)==true) return UKNOWN_FLOAT;
+    else if (is_string_varname(myStr)==true) return UKNOWN_VARNAME;
+    else if (is_string_simple_range(myStr)==true) return RANGE;
+    else if (is_string_skip_range(myStr)==true) return RANGE_SKIP;
+    else if (is_string_textint(myStr)==true) return STRING_INT;
+    else if (is_string_path(myStr)==true) return PATH;
+    return UKNOWN;
 }
 
 TokenType tokenize_char(const char myStr){
@@ -80,6 +81,8 @@ char* get_token_type(TokenType type) {
          return "IF";
       case ELSE:
          return "ELSE";
+        case TAB :
+            return "TAB";
       case WHILE:
          return "WHILE";
       case SEMICOLON:

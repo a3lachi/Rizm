@@ -488,11 +488,11 @@ bool parse_if_statement(rizm_AST* nodes , rizmTokenS** tkns) {
                 printf("[x] - BODY\n");
                 print_tokens(body_tokens);
 
-                // rizm_AST *if_ast = malloc(sizeof(rizm_AST));
-                // if_ast->DATA.IF_DECLARATION.bool_tokens = *pptokens;
-                // if_ast->DATA.IF_DECLARATION.body_tokens = *body_tokens;
-                // if_ast->structure.s = IF_STATEMENT;
-                // nodes->next = if_ast;
+                rizm_AST *if_ast = malloc(sizeof(rizm_AST));
+                if_ast->DATA.IF_DECLARATION.bool_tokens = pptokens;
+                if_ast->DATA.IF_DECLARATION.body_tokens = body_tokens;
+                if_ast->structure.s = IF_STATEMENT;
+                nodes->next = if_ast;
                 // print_ast(if_ast,1);
                 *tkns = ptoken;
                 return true;
@@ -541,10 +541,11 @@ rizm_AST* parse_tokens(rizmTokenS* tokens) {
         }
       }
       else if (ptokens->token.type == IF){
-        if (parse_if_statement(nodes,&ptokens)==true) {
+        if (parse_if_statement(pnodes,&ptokens)==true) {
             printf("Parsing IF statement : %s\n",get_token_type(ptokens->token.type))  ;
             // ptokens = ptokens->next;
-            // nodes = nodes->next;
+            if (pnodes->next)
+                pnodes = pnodes->next;
 
         }
         else {
@@ -620,7 +621,10 @@ void print_node_json(rizm_AST* node, int indent_level , int print_tokens) {
     }
     printf("\033[0m");
     if (node->structure.s == IF_STATEMENT) {
-        printf("Printing AST");
+        printf("%*sIF BOOL\n",indent_level+2,"");
+        print_tokens_two(node->DATA.IF_DECLARATION.bool_tokens,indent_level+2);
+        printf("%*sIF BODY\n",indent_level+2,"");
+        print_tokens_two(node->DATA.IF_DECLARATION.body_tokens,indent_level+2);
     }
     if (print_tokens == 1) {
       printf("%*s\"TOKENS\": \n", indent_level + 2, "");
