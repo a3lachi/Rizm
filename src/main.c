@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 
     rizm_AST* AST = parse_tokens(TOKENS);
     int PRINT_TOKENS = 1 ;
-    print_ast(AST,PRINT_TOKENS);
+    // print_ast(AST,PRINT_TOKENS);
 
 
     free(PROGRAM);

@@ -488,12 +488,12 @@ bool parse_if_statement(rizm_AST* nodes , rizmTokenS** tkns) {
                 printf("[x] - BODY\n");
                 print_tokens(body_tokens);
 
-                rizm_AST *if_ast = malloc(sizeof(rizm_AST));
-                if_ast->DATA.IF_DECLARATION.bool_tokens = *pptokens;
-                if_ast->DATA.IF_DECLARATION.body_tokens = *body_tokens;
-                if_ast->structure.s = IF_STATEMENT;
-                nodes->next = if_ast;
-                print_ast(if_ast,1);
+                // rizm_AST *if_ast = malloc(sizeof(rizm_AST));
+                // if_ast->DATA.IF_DECLARATION.bool_tokens = *pptokens;
+                // if_ast->DATA.IF_DECLARATION.body_tokens = *body_tokens;
+                // if_ast->structure.s = IF_STATEMENT;
+                // nodes->next = if_ast;
+                // print_ast(if_ast,1);
                 return true;
             }
             else {
